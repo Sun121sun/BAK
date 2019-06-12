@@ -18,7 +18,7 @@ emails=pd.read_csv('input/enron_05_17_2015_with_labels_v2.csv-enron_05_17_2015_w
 
 anrn_emp=pd.read_csv('input/enron_emp.csv')
 
-
+anrn_emp=anrn_emp.drop_duplicates()
 def to_upper(s):
     s=s.upper()
     s=s.strip()
@@ -247,17 +247,9 @@ emails_u=emails_u[emails_u['To'].apply(selectto)]
 print('x-to-done:')
 print(len(emails_u))
 
-#emails_person=emails_u[['Date','From','To','X-From','X-To']]
-emails_u_drop=emails_u[['Date','From','To','X-From','X-To','content']]
-emails_u_drop=emails_u_drop.drop_duplicates()
-#emails_person_drop=emails_u_drop[['Date','From','To','X-From','X-To']]
+
 
 print(len(emails_u_drop))
 
-#emails.to_csv('output/emails1_end.csv')
 
-
-#emails_u.to_csv('output/emails_use.csv')
-#emails_person.to_csv('output/emails_person.csv')
-#emails_person_drop.to_csv('output/emails_person_drop.csv')
-emails_u_drop.to_csv('output/emails_u_drop.csv')
+emails_u.to_csv('output/emails_use.csv')
